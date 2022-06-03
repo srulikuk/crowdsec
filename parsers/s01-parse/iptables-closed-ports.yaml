@@ -1,0 +1,16 @@
+onsuccess: next_stage
+#debug: true
+filter: "evt.Parsed.program == 'kernel' and evt.Parsed.message contains 'Closed port probe: IN='"
+name: crowdsecurity/iptables-closed-ports
+description: "Parse iptables closed ports probing"
+grok:
+  pattern: SRC=%{IP:src_ip} .*PROTO=%{WORD:proto} .*DPT=%{INT:dst_port}
+  apply_on: message
+statics:
+  - meta: service
+    expression: evt.Parsed.proto
+  - meta: log_type
+    value: iptables_drop
+  - meta: source_ip
+    expression: "evt.Parsed.src_ip"
+author: sruli s

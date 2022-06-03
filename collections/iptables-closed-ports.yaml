@@ -1,0 +1,10 @@
+parsers:
+  - crowdsecurity/syslog-logs
+  - crowdsecurity/iptables-closed-ports.yaml
+scenarios:
+  - crowdsecurity/iptables-closed-ports_tcp.yaml
+  - crowdsecurity/iptables-closed-ports_udp.yaml
+author: sruli s
+tags:
+  - scanner
+  - probe

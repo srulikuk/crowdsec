@@ -1,0 +1,13 @@
+type: leaky
+name: crowdsecurity/iptables-closed-ports_udp
+description: "ban probing IPs"
+filter: "evt.Meta.log_type == 'iptables_drop' && evt.Meta.service == 'UDP'"
+groupby: evt.Meta.source_ip
+capacity: 10
+leakspeed: 120m
+author: sruli s
+labels:
+  service: UDP
+  type: probe
+  remediation: true
+

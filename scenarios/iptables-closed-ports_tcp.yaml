@@ -1,0 +1,13 @@
+type: leaky
+name: crowdsecurity/iptables-closed-ports_tcp
+description: "ban probing IPs"
+filter: "evt.Meta.log_type == 'iptables_drop' && evt.Meta.service == 'TCP'"
+groupby: evt.Meta.source_ip
+capacity: 3
+leakspeed: 120m
+author: sruli s
+labels:
+  service: TCP
+  type: probe
+  remediation: true
+
