@@ -8,16 +8,3 @@ There are 2 secnarios, 1 for TCP which overflows at 3 and 1 for UDP which overfl
 
 Iptables is set to log all (NEW) traffic to closed ports.
 
-## Acquisition template
-
-Acquisition for this collection in acquis.yaml:
-
-```
-#portprobe
-source: file
-filenames: 
-  - /var/log/iptables_portprobe.log
-labels:
-  type: syslog
----
-```
